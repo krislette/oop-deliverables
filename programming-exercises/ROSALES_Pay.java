@@ -11,7 +11,7 @@ public class ROSALES_Pay {
             System.out.println("---------------- Pay Calculator ----------------");
             System.out.println("------------------------------------------------");
 
-            // Lines 17 up to 21 takes the necessary user inputs.
+            // Lines 15 up to 19 takes the necessary user inputs.
             System.out.print("Hourly Rate:\t\t");
             double dblHourlyRate = input.nextDouble();
             
@@ -20,7 +20,7 @@ public class ROSALES_Pay {
             
             input.nextLine(); // Consumes the excess \n left by input.nextDouble();
             
-            // Lines 26 to 32 outputs the necessary information for the user.
+            // Lines 24 to 30 outputs the necessary information for the user.
             double dblGrossPay = dblHourlyRate * dblHoursWorked;
             System.out.printf("\nGross Pay:\t\t%.2f\n", dblGrossPay);
             
