@@ -1,5 +1,3 @@
-package programmingExercises;
-
 import java.util.Arrays;
 
 public class Arr {
