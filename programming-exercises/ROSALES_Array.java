@@ -7,7 +7,7 @@ public class ROSALES_Array {
         System.out.println("------------------ Array Exercise -------------------");
         System.out.println("-----------------------------------------------------");
         
-        // Initializes the array and its size which will be used all throughout the program.
+        // Initializes the array to be used all throughout the program.
         int[] arrN = {33, 2, 70, 4, 52, 42, 8, 35, 9, 211};
         int intArrSize = arrN.length;
 
