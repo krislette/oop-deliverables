@@ -11,12 +11,11 @@ public class Time {
             System.out.println("---------------- Time Converter ----------------");
             System.out.println("------------------------------------------------");
 
-            System.out.print("Enter number of minutes worked: "); // Takes the user input for the corresponding minutes worked.
+            System.out.print("Enter number of minutes worked: "); 
             int intMinutesWorked = input.nextInt();
 
-            input.nextLine(); // This line of code consumes the excess new line character left by input.nextInt();
+            input.nextLine(); // Consumes the excess \n left by input.nextInt();
             
-            // Evaluates the conversion.
             int intHours = intMinutesWorked / 60;
             int intMinutes = intMinutesWorked % 60;
             

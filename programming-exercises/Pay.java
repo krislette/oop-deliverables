@@ -18,7 +18,7 @@ public class Pay {
             System.out.print("Hours Worked:\t\t");
             double dblHoursWorked = input.nextDouble();
             
-            input.nextLine(); // This line of code consumes the excess new line character left by input.nextDouble();
+            input.nextLine(); // Consumes the excess \n left by input.nextDouble();
             
             // Lines 26 to 32 outputs the necessary information for the user.
             double dblGrossPay = dblHourlyRate * dblHoursWorked;

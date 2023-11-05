@@ -11,10 +11,12 @@ public class Conversion {
             System.out.println("-------------- Money Denominations -------------");
             System.out.println("------------------------------------------------");
 
-            System.out.print("Cash on Hand:\t  "); // Takes the user input for the corresponding amount of cash on hand.
+            // Takes the user input for the corresponding amount of cash on hand.
+            System.out.print("Cash on Hand:\t  "); 
             int intCashOnHand = input.nextInt();
-
-            input.nextLine(); // This line of code consumes the excess new line character left by input.nextInt();
+            
+            input.nextLine(); // Consumes the excess \n left by input.nextInt();
+            
             System.out.println("Denominations:\t  ");
             
             int intOneThousand = intCashOnHand / 1000;
