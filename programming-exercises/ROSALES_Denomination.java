@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Conversion {
+public class ROSALES_Denomination {
 
     static Scanner input = new Scanner(System.in);
 
