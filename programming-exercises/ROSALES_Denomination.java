@@ -60,7 +60,6 @@ public class ROSALES_Denomination {
             if (strAnswer.equals("yes")) continue;
             else break;
         }
-
         System.out.println("------------------------------------------------");
         System.out.println("Thank you for using the program.");
         
