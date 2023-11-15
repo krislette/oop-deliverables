@@ -67,4 +67,5 @@ public class ROSALES_Denomination {
         input.close(); // This line of code closes the scanner.
         System.exit(0); 
     }
+    
 }
