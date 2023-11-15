@@ -14,7 +14,7 @@ public class Total {
         int[] arrNumbers = new int[INT_SIZE]; 
         
         // Block of code for getting the user inputs.
-        System.out.println("Enter " + INT_SIZE + " integers.\n");
+        System.out.println("Enter " + INT_SIZE + " integers one by one.\n");
         for (int i = 0; i < INT_SIZE; i++) {
             System.out.print("Number " + (i + 1) + "\t\b\b\b-> ");
             arrNumbers[i] = input.nextInt();

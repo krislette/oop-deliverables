@@ -16,7 +16,7 @@ public class Sort {
         Double[] arrNumbers = new Double[INT_SIZE];
 
         // Block of code for getting the user inputs.
-        System.out.println("Enter " + INT_SIZE + " values.\n");
+        System.out.println("Enter " + INT_SIZE + " values one by one.\n");
         for (int i = 0; i < INT_SIZE; i++) {
             System.out.print("Number " + (i + 1) + "\t\b\b\b-> ");
             arrNumbers[i] = input.nextDouble();
