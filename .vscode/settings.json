@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "programming-exercises",
         "assignment-2-2",
-        "programming-exercises"
+        "programming-exercises-1"
     ]
 }
