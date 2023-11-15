@@ -15,7 +15,7 @@ public class Vowels {
         System.out.print("Enter second string\t: ");
         String strSecondString = input.nextLine();
 
-        // Line 19 concatenates two strings, while line 20 replaces all vowel instances.
+        // Line 19 concatenates two strings while line 20 replaces all vowel instances.
         String strConcatenatedString = strFirstString.concat(strSecondString);
         String strResult = strConcatenatedString.replaceAll("[AaIiUuEeOo]", "*");
 
