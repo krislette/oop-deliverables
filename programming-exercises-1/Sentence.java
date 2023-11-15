@@ -29,7 +29,7 @@ public class Sentence {
          * I used a switch case instead of an if-else block to make it more readable.
          */
         switch (strChoice) {
-            case "ASC":
+            case "ASC": {
                 Arrays.sort(strResult); // Sorts the words from A-Z.
                 for (int i = 0; i < strResult.length - 1; i++) {
                     for (int j = 0; j < strResult.length - i - 1; j++) {
@@ -40,8 +40,10 @@ public class Sentence {
                         }
                     }
                 }
+
                 break;
-            case "DES":
+            }
+            case "DES": {
                 Arrays.sort(strResult, Collections.reverseOrder()); // Sorts the array from Z-A.
                 for (int i = 0; i < strResult.length - 1; i++) {
                     for (int j = 0; j < strResult.length - i - 1; j++) {
@@ -52,10 +54,13 @@ public class Sentence {
                         }
                     }
                 }
+                
                 break;
-            default:
+            }
+            default: {
                 System.out.println("Invalid input. Enter \"ASC\" or \"DES\" only.");
                 System.exit(1);
+            }
         }
 
         // Prints the sorted words using for each loop.
