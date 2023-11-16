@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.InputMismatchException;
 
 public class Sort {
 
@@ -15,12 +16,21 @@ public class Sort {
         // Declared the array that will store all the double/float user inputs.
         Double[] arrNumbers = new Double[INT_SIZE];
 
-        // Block of code for getting the user inputs.
+        // Lines 20 up to 34 are responsible for the overall user input.
         System.out.println("Enter " + INT_SIZE + " values one by one.\n");
+
+        // Block of code for getting the user inputs using loop.
         for (int i = 0; i < INT_SIZE; i++) {
-            System.out.print("Number " + (i + 1) + "\t\b\b\b-> ");
-            arrNumbers[i] = input.nextDouble();
+            try {
+                System.out.print("Number " + (i + 1) + "\t\b\b\b-> ");
+                arrNumbers[i] = input.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Enter float/double values only.");
+                i--;
+                input.nextLine();
+            }
         }
+
         input.nextLine(); // This will consume the new line character.
 
         // This block of code will ask for the user to choose between ASC or DES.
