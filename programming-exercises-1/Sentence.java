@@ -30,7 +30,7 @@ public class Sentence {
          */
         switch (strChoice) {
             case "ASC": {
-                Arrays.sort(strResult); // Sorts the words from A-Z.
+                Arrays.sort(strResult);                                 // Sorts the words from A-Z.
                 for (int i = 0; i < strResult.length - 1; i++) {
                     for (int j = 0; j < strResult.length - i - 1; j++) {
                         if (strResult[j].length() > strResult[j + 1].length()) {
@@ -44,7 +44,7 @@ public class Sentence {
                 break;
             }
             case "DES": {
-                Arrays.sort(strResult, Collections.reverseOrder()); // Sorts the array from Z-A.
+                Arrays.sort(strResult, Collections.reverseOrder());     // Sorts the array from Z-A.
                 for (int i = 0; i < strResult.length - 1; i++) {
                     for (int j = 0; j < strResult.length - i - 1; j++) {
                         if (strResult[j].length() < strResult[j + 1].length()) {
@@ -68,7 +68,7 @@ public class Sentence {
             System.out.println(strWord);
         }
         
-        // Pritns a closing message for the program.
+        // Prints a closing message for the program.
         System.out.println("-------------------------------------------------------");
         System.out.println("Thank you for using my program.");
 
