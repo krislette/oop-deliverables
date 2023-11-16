@@ -20,7 +20,7 @@ public class Sort {
         for (int i = 0; i < INT_SIZE; i++) {
             System.out.print("Number " + (i + 1) + "\t\b\b\b-> ");
             arrNumbers[i] = input.nextDouble();
-        }   
+        }
         input.nextLine(); // This will consume the new line character.
 
         // This block of code will ask for the user to choose between ASC or DES.
