@@ -63,13 +63,13 @@ public class Sentence {
             }
         }
 
-        // Prints the sorted words using for each loop.
+        // Prints the sorted words in DES/ASC format, separated by \n to highlight the length difference.
+        System.out.println("Sorted Array " + "[" + strChoice + "]: ");
         for (String strWord : strResult) {
             System.out.println(strWord);
         }
-        
-        // Prints a closing message for the program.
         System.out.println("-------------------------------------------------------");
+        
         System.out.println("Thank you for using my program.");
 
         // Ends the program properly.
