@@ -170,7 +170,7 @@ public class Surname_MP1 {
         displayChoices();
     }
 
-    // Method for counting the number of occurences of the substring from a main string.
+    // Method for counting the number of occurrences of a substring from a main string.
     public static void findSubstring(String strInput) {
         System.out.print("Enter a substring: ");
         String strSubstring = input.nextLine();
