@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Strings {
+public class Surname_MP1 {
 
     public static Scanner input = new Scanner(System.in);
     public static final int INT_DASH_LENGTH = 70;
@@ -11,6 +11,7 @@ public class Strings {
         displayDashes();
         System.out.println("\t\t\tString Analysis Toolkit");
 
+        // Enclosed the main program in a loop for the program to be reusable.
         while (true) {
             displayMenu();
             int intChoice = getInput(1, 10);
@@ -19,11 +20,11 @@ public class Strings {
             displayDashes();
             System.out.print("Enter a text: ");
             String strInput = input.nextLine();
-
             evaluateChoice(intChoice, strInput);
         }
     } 
 
+    // Method for displaying dashes (for design purposes).
     public static void displayDashes() {
         for (int i = 0; i < INT_DASH_LENGTH - 1; i++) {
             System.out.print("-");
@@ -31,11 +32,13 @@ public class Strings {
         System.out.println("-");
     }
     
+    // Method for checking if the input is within the range of the choices.
     public static boolean isValid(int intUserInput, int intMin, int intMax) {
         if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
         else return true;
     }
 
+    // Method with error handling for getting the valid user input.
     public static int getInput(int intMin, int intMax) {
         int intUserInput;
 
@@ -56,6 +59,7 @@ public class Strings {
         return intUserInput;
     }
 
+    // Method for displaying the main menu of the program.
     public static void displayMenu() {
         displayDashes();
         System.out.println("\t\t   Choose a type of string analysis.");
@@ -73,6 +77,7 @@ public class Strings {
         displayDashes();
     }
 
+    // Method for evaluating the user's choice and calling the corresponding method.
     public static void evaluateChoice(int intChoice, String strInput) {
         if (intChoice == 1) reverseString(strInput);
         else if (intChoice == 2) checkPalindrome(strInput);
@@ -86,6 +91,7 @@ public class Strings {
         else removeConsonant(strInput);
     }
 
+    // Method for reversing the characters inside the string.
     public static void reverseString(String strInput) {
         String strResult = "";
 
@@ -97,6 +103,7 @@ public class Strings {
         displayChoices();
     }
 
+    // Method for checking if the string is a palindrome.
     public static void checkPalindrome(String strInput) {
         int intLength = strInput.length();
         int intCount = 0;
@@ -116,6 +123,7 @@ public class Strings {
         displayChoices();
     }
 
+    // Method for checking if two strings are anagrams of each other.
     public static void checkAnagram(String strInput) {
         System.out.print("Enter another text: ");
         String strTestAnagram = input.nextLine();
@@ -141,6 +149,7 @@ public class Strings {
         displayChoices();
     }
 
+    // Method for counting the number of words in the string.
     public static void countWords(String strInput) {
         int intCount = 0;
 
@@ -154,12 +163,14 @@ public class Strings {
         displayChoices();
     }
 
+    // Method for counting the number of characters in the string.
     public static void countCharacters(String strInput) {
         strInput = strInput.replaceAll(" ", "");
         System.out.println("Number of Characters: " + strInput.length());
         displayChoices();
     }
 
+    // Method for counting the number of occurences of the substring from a main string.
     public static void findSubstring(String strInput) {
         System.out.print("Enter a substring: ");
         String strSubstring = input.nextLine();
@@ -176,26 +187,31 @@ public class Strings {
         displayChoices();
     }
 
+    // Method for converting the string to lowercase.
     public static void convertToLowerCase(String strInput) {
         System.out.println("Lowercased String: " + strInput.toLowerCase());
         displayChoices();
     }
 
+    // Method for converting the string to uppercase.
     public static void convertToUpperCase(String strInput) {
         System.out.println("Uppercased String: " + strInput.toUpperCase());
         displayChoices();
     }
 
+    // Method for removing the vowels from the string.
     public static void removeVowel(String strInput) {
         System.out.println("No-Vowel String: " + strInput.replaceAll("[AaIiUuEeOo]", ""));
         displayChoices();
     }
 
+    // Method for removing the consonants from the string.
     public static void removeConsonant(String strInput) {
         System.out.println("No-Consonant String: " + strInput.replaceAll("[^AaIiUuEeOo]", ""));
         displayChoices();
     }
 
+    // Method for displaying the choices after the program has been executed.
     public static void displayChoices() {
         displayDashes();
         System.out.println("[1] Go back to main menu.");
@@ -203,7 +219,6 @@ public class Strings {
         displayDashes();
 
         int intChoice = getInput(1, 2);
-
         if (intChoice == 2) {
             displayDashes();
             System.out.println("Program successfully terminated.");
