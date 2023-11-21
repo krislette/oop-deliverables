@@ -163,7 +163,7 @@ public class Surname_MP1 {
         displayChoices();
     }
 
-    // Method for counting the number of characters in the string.
+    // Method for counting the number of characters (excluding spaces) in the string.
     public static void countCharacters(String strInput) {
         strInput = strInput.replaceAll(" ", "");
         System.out.println("Number of Characters: " + strInput.length());
