@@ -11,7 +11,7 @@ public class Surname_MP1 {
         displayDashes();
         System.out.println("\t\t\tString Analysis Toolkit");
 
-        // Enclosed the main program in a loop for the program to be reusable.
+        // Enclosed the main program in a loop for it to be repeatable.
         while (true) {
             displayMenu();
             int intChoice = getInput(1, 10);
