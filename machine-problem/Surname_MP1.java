@@ -7,6 +7,7 @@ public class Surname_MP1 {
     public static Scanner input = new Scanner(System.in);
     public static final int INT_DASH_LENGTH = 70;
 
+    // Main method of the program.
     public static void main(String[] args) {
         displayDashes();
         System.out.println("\t\t\tString Analysis Toolkit");
@@ -106,6 +107,9 @@ public class Surname_MP1 {
 
     // Method for checking if the string is a palindrome.
     public static void checkPalindrome(String strInput) {
+        String strOriginalString = strInput;
+        strInput = removeSpecialCharacters(strInput);
+
         int intLength = strInput.length();
         int intCount = 0;
 
@@ -116,9 +120,9 @@ public class Surname_MP1 {
         }
 
         if (intCount == (intLength / 2)) {
-            System.out.println(strInput + " is a palindrome.");
+            System.out.println(strOriginalString + " is a palindrome.");
         } else {
-            System.out.println(strInput + " is not a palindrome.");
+            System.out.println(strOriginalString + " is not a palindrome.");
         }
 
         displayChoices();
@@ -129,22 +133,28 @@ public class Surname_MP1 {
         System.out.print("Enter another text: ");
         String strTestAnagram = input.nextLine();
 
+        String strFirstString = strInput;
+        String strSecondString = strTestAnagram;
+        
+        strInput = removeSpecialCharacters(strInput);
+        strTestAnagram = removeSpecialCharacters(strTestAnagram);
+
         if (strInput.length() != strTestAnagram.length()) {
-            System.out.println(strInput + " and " + strTestAnagram + " are not anagrams of each other.");
+            System.out.println(strFirstString + " and " + strSecondString + " are not anagrams of each other.");
             displayChoices();
             return;
         }
 
-        char[] arrFirstWord = strInput.toLowerCase().replaceAll(" ", "").toCharArray();
-        char[] arrSecondWord = strTestAnagram.toLowerCase().replaceAll(" ", "").toCharArray();
+        char[] arrFirstWord = strInput.toCharArray();
+        char[] arrSecondWord = strTestAnagram.toCharArray();
 
         Arrays.sort(arrFirstWord);
         Arrays.sort(arrSecondWord);
 
         if (Arrays.equals(arrFirstWord, arrSecondWord)) {
-            System.out.println(strInput + " and " + strTestAnagram + " are anagrams of each other.");
+            System.out.println(strFirstString + " and " + strSecondString + " are anagrams of each other.");
         } else {
-            System.out.println(strInput + " and " + strTestAnagram + " are not anagrams of each other.");
+            System.out.println(strFirstString + " and " + strSecondString + " are not anagrams of each other.");
         }
 
         displayChoices();
@@ -220,6 +230,11 @@ public class Surname_MP1 {
             input.close();
             System.exit(0);
         }
+    }
+
+    // Method for removing special characters from the string.
+    public static String removeSpecialCharacters(String strInput) {
+        return strInput.toLowerCase().replaceAll("[^0-9a-z-A-Z]+", "");
     }
 
 }
