@@ -92,7 +92,7 @@ public class Surname_MP1 {
         else if (intChoice == 9) removeVowel(strInput);
         else removeConsonant(strInput);
     }
-    
+
     // Method for removing special characters from the string.
     public static String removeSpecialCharacters(String strInput) {
         return strInput.toLowerCase().replaceAll("[^0-9a-z-A-Z]+", "");
