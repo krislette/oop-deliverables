@@ -60,7 +60,7 @@ public class Surname_MP1 {
         if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
         else return true;
     }
-    
+
     // Method for displaying the main menu of the program.
     public static void displayMenu() {
         displayDashes();
@@ -135,7 +135,7 @@ public class Surname_MP1 {
 
         String strFirstString = strInput;
         String strSecondString = strTestAnagram;
-        
+
         strInput = removeSpecialCharacters(strInput);
         strTestAnagram = removeSpecialCharacters(strTestAnagram);
 
