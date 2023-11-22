@@ -34,16 +34,10 @@ public class Surname_MP1 {
         System.out.println("-");
     }
     
-    // Method for checking if the input is within the range of the choices.
-    public static boolean isValid(int intUserInput, int intMin, int intMax) {
-        if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
-        else return true;
-    }
-
     // Method with error handling for getting the valid user input.
     public static int getInput(int intMin, int intMax) {
         int intUserInput;
-
+        
         try {
             System.out.print("Choice: ");
             intUserInput = input.nextInt();
@@ -52,15 +46,21 @@ public class Surname_MP1 {
             input.nextLine();
             return getInput(intMin, intMax);
         }
-
+        
         if (!isValid(intUserInput, intMin, intMax)) {
             System.out.printf("Invalid input. Enter numbers from %d-%d only.\n", intMin, intMax);
             return getInput(intMin, intMax);
         }
-
+        
         return intUserInput;
     }
 
+    // Method for checking if the input is within the range of the choices.
+    public static boolean isValid(int intUserInput, int intMin, int intMax) {
+        if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
+        else return true;
+    }
+    
     // Method for displaying the main menu of the program.
     public static void displayMenu() {
         displayDashes();
