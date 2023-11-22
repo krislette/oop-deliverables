@@ -33,7 +33,7 @@ public class Surname_MP1 {
         }
         System.out.println("-");
     }
-    
+
     // Method with error handling for getting the valid user input.
     public static int getInput(int intMin, int intMax) {
         int intUserInput;
