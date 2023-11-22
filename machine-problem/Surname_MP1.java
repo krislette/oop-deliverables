@@ -151,15 +151,9 @@ public class Surname_MP1 {
 
     // Method for counting the number of words in the string.
     public static void countWords(String strInput) {
-        int intCount = 0;
+        String[] arrWords = strInput.split("[^0-9a-z-A-Z]+");
 
-        for (int i = 0; i < strInput.length(); i++) {
-            if (strInput.charAt(i) == ' ') {
-                intCount++;
-            }
-        }
-
-        System.out.println("Number of Words: " + (intCount + 1));
+        System.out.println("Number of Words: " + arrWords.length);
         displayChoices();
     }
 
@@ -219,6 +213,7 @@ public class Surname_MP1 {
         displayDashes();
 
         int intChoice = getInput(1, 2);
+        
         if (intChoice == 2) {
             displayDashes();
             System.out.println("Program successfully terminated.");
