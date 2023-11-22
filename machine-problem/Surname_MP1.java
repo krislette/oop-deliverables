@@ -10,7 +10,7 @@ public class Surname_MP1 {
     // Main method of the program.
     public static void main(String[] args) {
         displayDashes();
-        System.out.println("\t\t\tString Analysis Toolkit");
+        System.out.println("\t\t\t\b\bString Manipulation Toolkit");
 
         // Enclosed the main program in a loop for it to be repeatable.
         while (true) {
