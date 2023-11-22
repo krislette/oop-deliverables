@@ -60,7 +60,7 @@ public class Surname_MP1 {
         if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
         else return true;
     }
-
+    
     // Method for displaying the main menu of the program.
     public static void displayMenu() {
         displayDashes();
@@ -92,19 +92,24 @@ public class Surname_MP1 {
         else if (intChoice == 9) removeVowel(strInput);
         else removeConsonant(strInput);
     }
+    
+    // Method for removing special characters from the string.
+    public static String removeSpecialCharacters(String strInput) {
+        return strInput.toLowerCase().replaceAll("[^0-9a-z-A-Z]+", "");
+    }
 
     // Method for reversing the characters inside the string.
     public static void reverseString(String strInput) {
         String strResult = "";
-
+        
         for (int i = strInput.length() - 1; i >= 0; i--) {
             strResult += strInput.charAt(i);
         }
-
+        
         System.out.println("Reversed String: " + strResult);
         displayChoices();
     }
-
+    
     // Method for checking if the string is a palindrome.
     public static void checkPalindrome(String strInput) {
         String strOriginalString = strInput;
@@ -230,11 +235,6 @@ public class Surname_MP1 {
             input.close();
             System.exit(0);
         }
-    }
-
-    // Method for removing special characters from the string.
-    public static String removeSpecialCharacters(String strInput) {
-        return strInput.toLowerCase().replaceAll("[^0-9a-z-A-Z]+", "");
     }
 
 }
