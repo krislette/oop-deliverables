@@ -60,7 +60,7 @@ public class Surname_MP1 {
         if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
         else return true;
     }
-    
+
     // Method for displaying the main menu of the program.
     public static void displayMenu() {
         displayDashes();
@@ -109,7 +109,7 @@ public class Surname_MP1 {
         System.out.println("Reversed String: " + strResult);
         displayChoices();
     }
-    
+
     // Method for [2] checking if the string is a palindrome.
     public static void checkPalindrome(String strInput) {
         String strOriginalString = strInput;
