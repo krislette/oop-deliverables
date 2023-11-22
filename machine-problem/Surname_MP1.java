@@ -16,10 +16,11 @@ public class Surname_MP1 {
             displayMenu();
             int intChoice = getInput(1, 10);
             input.nextLine();
-
+            
             displayDashes();
             System.out.print("Enter a text: ");
             String strInput = input.nextLine();
+            
             evaluateChoice(intChoice, strInput);
         }
     } 
@@ -152,7 +153,6 @@ public class Surname_MP1 {
     // Method for counting the number of words in the string.
     public static void countWords(String strInput) {
         String[] arrWords = strInput.split("[^0-9a-z-A-Z]+");
-
         System.out.println("Number of Words: " + arrWords.length);
         displayChoices();
     }
@@ -213,7 +213,7 @@ public class Surname_MP1 {
         displayDashes();
 
         int intChoice = getInput(1, 2);
-        
+
         if (intChoice == 2) {
             displayDashes();
             System.out.println("Program successfully terminated.");
