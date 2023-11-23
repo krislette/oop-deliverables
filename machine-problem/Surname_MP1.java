@@ -10,18 +10,17 @@ public class Surname_MP1 {
     // Main method of the program.
     public static void main(String[] args) {
         displayDashes();
-        System.out.println("\t\t\t\b\bString Manipulation Toolkit");
+        System.out.println("\t\t\tString Analysis Toolkit");
 
         // Enclosed the main program in a loop for it to be repeatable.
         while (true) {
             displayMenu();
             int intChoice = getInput(1, 10);
             input.nextLine();
-            
+
             displayDashes();
-            System.out.print("Enter a text: ");
+            System.out.print("Enter three sentences: ");
             String strInput = input.nextLine();
-            
             evaluateChoice(intChoice, strInput);
         }
     } 
@@ -33,11 +32,17 @@ public class Surname_MP1 {
         }
         System.out.println("-");
     }
+    
+    // Method for checking if the input is within the range of the choices.
+    public static boolean isValid(int intUserInput, int intMin, int intMax) {
+        if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
+        else return true;
+    }
 
     // Method with error handling for getting the valid user input.
     public static int getInput(int intMin, int intMax) {
         int intUserInput;
-        
+
         try {
             System.out.print("Choice: ");
             intUserInput = input.nextInt();
@@ -46,19 +51,13 @@ public class Surname_MP1 {
             input.nextLine();
             return getInput(intMin, intMax);
         }
-        
+
         if (!isValid(intUserInput, intMin, intMax)) {
             System.out.printf("Invalid input. Enter numbers from %d-%d only.\n", intMin, intMax);
             return getInput(intMin, intMax);
         }
-        
-        return intUserInput;
-    }
 
-    // Method for checking if the input is within the range of the choices.
-    public static boolean isValid(int intUserInput, int intMin, int intMax) {
-        if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
-        else return true;
+        return intUserInput;
     }
 
     // Method for displaying the main menu of the program.
@@ -93,28 +92,20 @@ public class Surname_MP1 {
         else removeConsonant(strInput);
     }
 
-    // Method for removing special characters from the string.
-    public static String removeSpecialCharacters(String strInput) {
-        return strInput.toLowerCase().replaceAll("[^0-9a-z-A-Z]+", "");
-    }
-
-    // Method for [1] reversing the characters inside the string.
+    // Method for reversing the characters inside the string.
     public static void reverseString(String strInput) {
         String strResult = "";
-        
+
         for (int i = strInput.length() - 1; i >= 0; i--) {
             strResult += strInput.charAt(i);
         }
-        
+
         System.out.println("Reversed String: " + strResult);
         displayChoices();
     }
 
-    // Method for [2] checking if the string is a palindrome.
+    // Method for checking if the string is a palindrome.
     public static void checkPalindrome(String strInput) {
-        String strOriginalString = strInput;
-        strInput = removeSpecialCharacters(strInput);
-
         int intLength = strInput.length();
         int intCount = 0;
 
@@ -125,61 +116,55 @@ public class Surname_MP1 {
         }
 
         if (intCount == (intLength / 2)) {
-            System.out.println(strOriginalString + " is a palindrome.");
+            System.out.println(strInput + " is a palindrome.");
         } else {
-            System.out.println(strOriginalString + " is not a palindrome.");
+            System.out.println(strInput + " is not a palindrome.");
         }
 
         displayChoices();
     }
 
-    // Method for [3] checking if two strings are anagrams of each other.
+    // Method for checking if two strings are anagrams of each other.
     public static void checkAnagram(String strInput) {
         System.out.print("Enter another text: ");
         String strTestAnagram = input.nextLine();
 
-        String strFirstString = strInput;
-        String strSecondString = strTestAnagram;
-
-        strInput = removeSpecialCharacters(strInput);
-        strTestAnagram = removeSpecialCharacters(strTestAnagram);
-
         if (strInput.length() != strTestAnagram.length()) {
-            System.out.println(strFirstString + " and " + strSecondString + " are not anagrams of each other.");
+            System.out.println(strInput + " and " + strTestAnagram + " are not anagrams of each other.");
             displayChoices();
             return;
         }
 
-        char[] arrFirstWord = strInput.toCharArray();
-        char[] arrSecondWord = strTestAnagram.toCharArray();
+        char[] arrFirstWord = strInput.toLowerCase().replaceAll(" ", "").toCharArray();
+        char[] arrSecondWord = strTestAnagram.toLowerCase().replaceAll(" ", "").toCharArray();
 
         Arrays.sort(arrFirstWord);
         Arrays.sort(arrSecondWord);
 
         if (Arrays.equals(arrFirstWord, arrSecondWord)) {
-            System.out.println(strFirstString + " and " + strSecondString + " are anagrams of each other.");
+            System.out.println(strInput + " and " + strTestAnagram + " are anagrams of each other.");
         } else {
-            System.out.println(strFirstString + " and " + strSecondString + " are not anagrams of each other.");
+            System.out.println(strInput + " and " + strTestAnagram + " are not anagrams of each other.");
         }
 
         displayChoices();
     }
 
-    // Method for [4] counting the number of words in the string.
+    // Method for counting the number of words in the string.
     public static void countWords(String strInput) {
         String[] arrWords = strInput.split("[^0-9a-z-A-Z]+");
         System.out.println("Number of Words: " + arrWords.length);
         displayChoices();
     }
 
-    // Method for [5] counting the number of characters (excluding spaces) in the string.
+    // Method for counting the number of characters (excluding spaces) in the string.
     public static void countCharacters(String strInput) {
         strInput = strInput.replaceAll(" ", "");
         System.out.println("Number of Characters: " + strInput.length());
         displayChoices();
     }
 
-    // Method for [6] counting the number of occurrences of a substring from a main string.
+    // Method for counting the number of occurrences of a substring from a main string.
     public static void findSubstring(String strInput) {
         System.out.print("Enter a substring: ");
         String strSubstring = input.nextLine();
@@ -196,25 +181,25 @@ public class Surname_MP1 {
         displayChoices();
     }
 
-    // Method for [7] converting the string to lowercase.
+    // Method for converting the string to lowercase.
     public static void convertToLowerCase(String strInput) {
         System.out.println("Lowercased String: " + strInput.toLowerCase());
         displayChoices();
     }
 
-    // Method for [8] converting the string to uppercase.
+    // Method for converting the string to uppercase.
     public static void convertToUpperCase(String strInput) {
         System.out.println("Uppercased String: " + strInput.toUpperCase());
         displayChoices();
     }
 
-    // Method for [9] removing the vowels from the string.
+    // Method for removing the vowels from the string.
     public static void removeVowel(String strInput) {
         System.out.println("No-Vowel String: " + strInput.replaceAll("[AaIiUuEeOo]", ""));
         displayChoices();
     }
 
-    // Method for [10] removing the consonants from the string.
+    // Method for removing the consonants from the string.
     public static void removeConsonant(String strInput) {
         System.out.println("No-Consonant String: " + strInput.replaceAll("[^AaIiUuEeOo]", ""));
         displayChoices();
@@ -228,7 +213,7 @@ public class Surname_MP1 {
         displayDashes();
 
         int intChoice = getInput(1, 2);
-
+        
         if (intChoice == 2) {
             displayDashes();
             System.out.println("Program successfully terminated.");
