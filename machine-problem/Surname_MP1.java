@@ -43,8 +43,7 @@ public class Surname_MP1 {
 
     // Method for checking if the input is within the range of the choices.
     public static boolean isValid(int intUserInput, int intMin, int intMax) {
-        if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
-        else return true;
+        return !((intUserInput >= intMin) && (intUserInput <= intMax)) ? false : true;
     }
 
     // Method with error handling for getting the valid user input.
@@ -61,8 +60,7 @@ public class Surname_MP1 {
         }
 
         if (!isValid(intUserInput, intMin, intMax)) {
-            System.out.printf(toBold("Invalid input.") 
-                                + " Enter numbers from %d-%d only.\n", intMin, intMax);
+            System.out.printf(toBold("Invalid input.") + " Enter numbers from %d-%d only.\n", intMin, intMax);
             return getInput(intMin, intMax);
         }
 
@@ -138,11 +136,8 @@ public class Surname_MP1 {
             }
         }
 
-        if (intCount == (intLength / 2)) {
-            System.out.println(strInput + " is " + toBold("a palindrome."));
-        } else {
-            System.out.println(strInput + " is " + toBold("not a palindrome."));
-        }
+        System.out.println(strInput + " is " 
+                            + toBold((intCount == intLength / 2) ? "a palindrome." : "not a palindrome."));
 
         displayChoices();
     }
@@ -159,19 +154,15 @@ public class Surname_MP1 {
             return;
         }
 
-        char[] arrFirstWord = strInput.toLowerCase().replaceAll(" ", "").toCharArray();
-        char[] arrSecondWord = strTestAnagram.toLowerCase().replaceAll(" ", "").toCharArray();
+        char[] arrFirstWord = strInput.toCharArray();
+        char[] arrSecondWord = strTestAnagram.toCharArray();
 
         Arrays.sort(arrFirstWord);
         Arrays.sort(arrSecondWord);
 
-        if (Arrays.equals(arrFirstWord, arrSecondWord)) {
-            System.out.println(strInput + " and " + strTestAnagram + " are " 
-                                + toBold("anagrams") + " of each other.");
-        } else {
-            System.out.println(strInput + " and " + strTestAnagram + " are " 
-                                + toBold("not anagrams") + " of each other.");
-        }
+        System.out.println(strInput + " and " + strTestAnagram + " are " 
+                            + toBold((Arrays.equals(arrFirstWord, arrSecondWord)) ? "anagrams" : "not anagrams") 
+                            + " of each other.");
 
         displayChoices();
     }
@@ -236,9 +227,8 @@ public class Surname_MP1 {
         System.out.println(toBold("[1]") + " Go back to main menu.");
         System.out.println(toBold("[2]") + " Exit the program.");
         displayDashes();
-
         int intChoice = getInput(1, 2);
-        
+
         if (intChoice == 2) {
             displayDashes();
             System.out.println(toBold("Program successfully terminated."));
