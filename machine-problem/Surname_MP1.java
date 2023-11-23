@@ -6,15 +6,15 @@ public class Surname_MP1 {
 
     public static Scanner input = new Scanner(System.in);
     public static final int INT_DASH_LENGTH = 70;
+    public static final String STR_SET_PLAIN_TEXT = "\033[0;0m";
+    public static final String STR_SET_BOLD_TEXT = "\033[0;1m";
 
     // Main method of the program.
     public static void main(String[] args) {
-        // Enclosed the main program in a loop for it to be repeatable.
         while (true) {
             displayDashes();
-            System.out.println("\t\t\tString Analysis Toolkit");
+            System.out.println("\t\t\t\b\b" + toBold("String Manipulation Toolkit"));
             displayMenu();
-
             int intChoice = getInput(1, 10);
             input.nextLine();
 
@@ -22,11 +22,16 @@ public class Surname_MP1 {
             displayUserDecision(intChoice);
             displayDashes();
 
-            System.out.print("Enter three sentences: ");
+            System.out.print(toBold("Enter three sentences: "));
             String strInput = input.nextLine();
             evaluateChoice(intChoice, strInput);
         }
     } 
+
+    // Method for setting a given string to bold format.
+    public static String toBold(String strText) {
+        return (STR_SET_BOLD_TEXT + strText + STR_SET_PLAIN_TEXT);
+    }
 
     // Method for displaying dashes (for design purposes).
     public static void displayDashes() {
@@ -47,16 +52,17 @@ public class Surname_MP1 {
         int intUserInput;
 
         try {
-            System.out.print("Choice: ");
+            System.out.print(toBold("Choice: "));
             intUserInput = input.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Enter integer values only.");
+            System.out.println(toBold("Invalid input.") + " Enter integer values only.");
             input.nextLine();
             return getInput(intMin, intMax);
         }
 
         if (!isValid(intUserInput, intMin, intMax)) {
-            System.out.printf("Invalid input. Enter numbers from %d-%d only.\n", intMin, intMax);
+            System.out.printf(toBold("Invalid input.") 
+                                + " Enter numbers from %d-%d only.\n", intMin, intMax);
             return getInput(intMin, intMax);
         }
 
@@ -81,17 +87,18 @@ public class Surname_MP1 {
         displayDashes();
     }
 
+    // Method for displaying the user's choice for clarity.
     public static void displayUserDecision(int intChoice) {
-        if (intChoice == 1) System.out.println("-> You chose String Reversal");
-        else if (intChoice == 2) System.out.println("-> You chose Palindrome Checker");
-        else if (intChoice == 3) System.out.println("-> You chose Anagram Checker");
-        else if (intChoice == 4) System.out.println("-> You chose Word Count");
-        else if (intChoice == 5) System.out.println("-> You chose Character Count");
-        else if (intChoice == 6) System.out.println("-> You chose Substring Finder");
-        else if (intChoice == 7) System.out.println("-> You chose Lower Case Converter");
-        else if (intChoice == 8) System.out.println("-> You chose Upper Case Converter");
-        else if (intChoice == 9) System.out.println("-> You chose Vowel Remover");
-        else System.out.println("-> You chose Consonant Remover");
+        if (intChoice == 1) System.out.println("You chose " + toBold("String Reversal"));
+        else if (intChoice == 2) System.out.println("-> You chose " + toBold("Palindrome Checker"));
+        else if (intChoice == 3) System.out.println("-> You chose " + toBold("Anagram Checker"));
+        else if (intChoice == 4) System.out.println("-> You chose " + toBold("Word Count"));
+        else if (intChoice == 5) System.out.println("-> You chose " + toBold("Character Count"));
+        else if (intChoice == 6) System.out.println("-> You chose " + toBold("Substring Finder"));
+        else if (intChoice == 7) System.out.println("-> You chose " + toBold("Lower Case Converter"));
+        else if (intChoice == 8) System.out.println("-> You chose " + toBold("Upper Case Converter"));
+        else if (intChoice == 9) System.out.println("-> You chose " + toBold("Vowel Remover"));
+        else System.out.println("-> You chose " + toBold("Consonant Remover"));
     }
 
     // Method for evaluating the user's choice and calling the corresponding method.
@@ -116,7 +123,7 @@ public class Surname_MP1 {
             strResult += strInput.charAt(i);
         }
 
-        System.out.println("Reversed String: " + strResult);
+        System.out.println(toBold("Reversed String: ") + strResult);
         displayChoices();
     }
 
@@ -132,9 +139,9 @@ public class Surname_MP1 {
         }
 
         if (intCount == (intLength / 2)) {
-            System.out.println(strInput + " is a palindrome.");
+            System.out.println(strInput + " is " + toBold("a palindrome."));
         } else {
-            System.out.println(strInput + " is not a palindrome.");
+            System.out.println(strInput + " is " + toBold("not a palindrome."));
         }
 
         displayChoices();
@@ -142,11 +149,12 @@ public class Surname_MP1 {
 
     // Method for checking if two strings are anagrams of each other.
     public static void checkAnagram(String strInput) {
-        System.out.print("Enter another text: ");
+        System.out.print(toBold("Enter another text: "));
         String strTestAnagram = input.nextLine();
 
         if (strInput.length() != strTestAnagram.length()) {
-            System.out.println(strInput + " and " + strTestAnagram + " are not anagrams of each other.");
+            System.out.println(strInput + " and " + strTestAnagram + " are " 
+                                + toBold("not anagrams") + " of each other.");
             displayChoices();
             return;
         }
@@ -158,9 +166,11 @@ public class Surname_MP1 {
         Arrays.sort(arrSecondWord);
 
         if (Arrays.equals(arrFirstWord, arrSecondWord)) {
-            System.out.println(strInput + " and " + strTestAnagram + " are anagrams of each other.");
+            System.out.println(strInput + " and " + strTestAnagram + " are " 
+                                + toBold("anagrams") + " of each other.");
         } else {
-            System.out.println(strInput + " and " + strTestAnagram + " are not anagrams of each other.");
+            System.out.println(strInput + " and " + strTestAnagram + " are " 
+                                + toBold("not anagrams") + " of each other.");
         }
 
         displayChoices();
@@ -169,19 +179,19 @@ public class Surname_MP1 {
     // Method for counting the number of words in the string.
     public static void countWords(String strInput) {
         String[] arrWords = strInput.split("[^0-9a-z-A-Z]+");
-        System.out.println("Number of Words: " + arrWords.length);
+        System.out.println(toBold("Number of Words: ") + arrWords.length);
         displayChoices();
     }
 
     // Method for counting the number of characters (excluding spaces) in the string.
     public static void countCharacters(String strInput) {
-        System.out.println("Number of Characters: " + strInput.replaceAll(" ", "").length());
+        System.out.println(toBold("Number of Characters: ") + strInput.replaceAll(" ", "").length());
         displayChoices();
     }
 
     // Method for counting the number of occurrences of a substring from a main string.
     public static void findSubstring(String strInput) {
-        System.out.print("Enter a substring: ");
+        System.out.print(toBold("Enter a substring: "));
         String strSubstring = input.nextLine();
 
         int intCount = 0;
@@ -192,46 +202,46 @@ public class Surname_MP1 {
             intIndex = strInput.indexOf(strSubstring, intIndex + 1);
         }
         
-        System.out.printf("Count of \"%s\": %d\n", strSubstring, intCount);
+        System.out.printf(toBold("Count of \"%s\": %d\n"), strSubstring, intCount);
         displayChoices();
     }
 
     // Method for converting the string to lowercase.
     public static void convertToLowerCase(String strInput) {
-        System.out.println("Lowercased String: " + strInput.toLowerCase());
+        System.out.println(toBold("Lowercased String: ") + strInput.toLowerCase());
         displayChoices();
     }
 
     // Method for converting the string to uppercase.
     public static void convertToUpperCase(String strInput) {
-        System.out.println("Uppercased String: " + strInput.toUpperCase());
+        System.out.println(toBold("Uppercased String: ") + strInput.toUpperCase());
         displayChoices();
     }
 
     // Method for removing the vowels from the string.
     public static void removeVowel(String strInput) {
-        System.out.println("No-Vowel String: " + strInput.replaceAll("[AaIiUuEeOo]", ""));
+        System.out.println(toBold("No-Vowel String: ") + strInput.replaceAll("[AaIiUuEeOo]", ""));
         displayChoices();
     }
 
     // Method for removing the consonants from the string.
     public static void removeConsonant(String strInput) {
-        System.out.println("No-Consonant String: " + strInput.replaceAll("[^AaIiUuEeOo]", ""));
+        System.out.println(toBold("No-Consonant String: ") + strInput.replaceAll("[^AaIiUuEeOo]", ""));
         displayChoices();
     }
 
     // Method for displaying the choices after the program has been executed.
     public static void displayChoices() {
         displayDashes();
-        System.out.println("[1] Go back to main menu.");
-        System.out.println("[2] Exit the program.");
+        System.out.println(toBold("[1]") + " Go back to main menu.");
+        System.out.println(toBold("[2]") + " Exit the program.");
         displayDashes();
 
         int intChoice = getInput(1, 2);
         
         if (intChoice == 2) {
             displayDashes();
-            System.out.println("Program successfully terminated.");
+            System.out.println(toBold("Program successfully terminated."));
             input.close();
             System.exit(0);
         }
