@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Surname_MP1 {
+public class Rosales_MP1 {
 
     public static Scanner input = new Scanner(System.in);
     public static final int INT_DASH_LENGTH = 70;
