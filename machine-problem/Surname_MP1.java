@@ -115,7 +115,7 @@ public class Surname_MP1 {
         else removeConsonant(strInput);
     }
 
-    // Method for reversing the characters inside the string.
+    // Method for [1] reversing the characters inside the string.
     public static void reverseString(String strInput) {
         String strResult = "";
 
@@ -127,7 +127,7 @@ public class Surname_MP1 {
         displayChoices();
     }
 
-    // Method for checking if the string is a palindrome.
+    // Method for [2] checking if the string is a palindrome.
     public static void checkPalindrome(String strInput) {
         int intLength = strInput.length();
         int intCount = 0;
@@ -147,7 +147,7 @@ public class Surname_MP1 {
         displayChoices();
     }
 
-    // Method for checking if two strings are anagrams of each other.
+    // Method for [3] checking if two strings are anagrams of each other.
     public static void checkAnagram(String strInput) {
         System.out.print(toBold("Enter another text: "));
         String strTestAnagram = input.nextLine();
@@ -176,20 +176,20 @@ public class Surname_MP1 {
         displayChoices();
     }
 
-    // Method for counting the number of words in the string.
+    // Method for [4] counting the number of words in the string.
     public static void countWords(String strInput) {
         String[] arrWords = strInput.split("[^0-9a-z-A-Z]+");
         System.out.println(toBold("Number of Words: ") + arrWords.length);
         displayChoices();
     }
 
-    // Method for counting the number of characters (excluding spaces) in the string.
+    // Method for [5] counting the number of characters (excluding spaces) in the string.
     public static void countCharacters(String strInput) {
         System.out.println(toBold("Number of Characters: ") + strInput.replaceAll(" ", "").length());
         displayChoices();
     }
 
-    // Method for counting the number of occurrences of a substring from a main string.
+    // Method for [6] counting the number of occurrences of a substring from a main string.
     public static void findSubstring(String strInput) {
         System.out.print(toBold("Enter a substring: "));
         String strSubstring = input.nextLine();
@@ -206,25 +206,25 @@ public class Surname_MP1 {
         displayChoices();
     }
 
-    // Method for converting the string to lowercase.
+    // Method for [7] converting the string to lowercase.
     public static void convertToLowerCase(String strInput) {
         System.out.println(toBold("Lowercased String: ") + strInput.toLowerCase());
         displayChoices();
     }
 
-    // Method for converting the string to uppercase.
+    // Method for [8] converting the string to uppercase.
     public static void convertToUpperCase(String strInput) {
         System.out.println(toBold("Uppercased String: ") + strInput.toUpperCase());
         displayChoices();
     }
 
-    // Method for removing the vowels from the string.
+    // Method for [9] removing the vowels from the string.
     public static void removeVowel(String strInput) {
         System.out.println(toBold("No-Vowel String: ") + strInput.replaceAll("[AaIiUuEeOo]", ""));
         displayChoices();
     }
 
-    // Method for removing the consonants from the string.
+    // Method for [10] removing the consonants from the string.
     public static void removeConsonant(String strInput) {
         System.out.println(toBold("No-Consonant String: ") + strInput.replaceAll("[^AaIiUuEeOo]", ""));
         displayChoices();
