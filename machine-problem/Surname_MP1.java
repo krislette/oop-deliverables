@@ -9,16 +9,19 @@ public class Surname_MP1 {
 
     // Main method of the program.
     public static void main(String[] args) {
-        displayDashes();
-        System.out.println("\t\t\tString Analysis Toolkit");
-
         // Enclosed the main program in a loop for it to be repeatable.
         while (true) {
+            displayDashes();
+            System.out.println("\t\t\tString Analysis Toolkit");
             displayMenu();
+
             int intChoice = getInput(1, 10);
             input.nextLine();
 
             displayDashes();
+            displayUserDecision(intChoice);
+            displayDashes();
+
             System.out.print("Enter three sentences: ");
             String strInput = input.nextLine();
             evaluateChoice(intChoice, strInput);
@@ -76,6 +79,19 @@ public class Surname_MP1 {
         System.out.println("|  9 | Vowel Remover");
         System.out.println("| 10 | Consonant Remover");
         displayDashes();
+    }
+
+    public static void displayUserDecision(int intChoice) {
+        if (intChoice == 1) System.out.println("-> You chose String Reversal");
+        else if (intChoice == 2) System.out.println("-> You chose Palindrome Checker");
+        else if (intChoice == 3) System.out.println("-> You chose Anagram Checker");
+        else if (intChoice == 4) System.out.println("-> You chose Word Count");
+        else if (intChoice == 5) System.out.println("-> You chose Character Count");
+        else if (intChoice == 6) System.out.println("-> You chose Substring Finder");
+        else if (intChoice == 7) System.out.println("-> You chose Lower Case Converter");
+        else if (intChoice == 8) System.out.println("-> You chose Upper Case Converter");
+        else if (intChoice == 9) System.out.println("-> You chose Vowel Remover");
+        else System.out.println("-> You chose Consonant Remover");
     }
 
     // Method for evaluating the user's choice and calling the corresponding method.
@@ -159,8 +175,7 @@ public class Surname_MP1 {
 
     // Method for counting the number of characters (excluding spaces) in the string.
     public static void countCharacters(String strInput) {
-        strInput = strInput.replaceAll(" ", "");
-        System.out.println("Number of Characters: " + strInput.length());
+        System.out.println("Number of Characters: " + strInput.replaceAll(" ", "").length());
         displayChoices();
     }
 
