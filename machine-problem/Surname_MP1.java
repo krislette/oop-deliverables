@@ -40,7 +40,7 @@ public class Surname_MP1 {
         }
         System.out.println("-");
     }
-    
+
     // Method for checking if the input is within the range of the choices.
     public static boolean isValid(int intUserInput, int intMin, int intMax) {
         if (!((intUserInput >= intMin) && (intUserInput <= intMax))) return false;
