@@ -169,7 +169,7 @@ public class Rosales_MP1 {
 
     // Method for [4] counting the number of words in the string.
     public static void countWords(String strInput) {
-        String[] arrWords = strInput.split("[^0-9a-z-A-Z]+");
+        String[] arrWords = strInput.split("[^0-9a-zA-Z'-]+");
         System.out.println(toBold("Number of Words: ") + arrWords.length);
         displayChoices();
     }
@@ -217,7 +217,7 @@ public class Rosales_MP1 {
 
     // Method for [10] removing the consonants from the string.
     public static void removeConsonant(String strInput) {
-        System.out.println(toBold("No-Consonant String: ") + strInput.replaceAll("[^AaIiUuEeOo]", ""));
+        System.out.println(toBold("No-Consonant String: ") + strInput.replaceAll("[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]", ""));
         displayChoices();
     }
 
