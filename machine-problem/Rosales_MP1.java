@@ -87,7 +87,7 @@ public class Rosales_MP1 {
 
     // Method for displaying the user's choice for clarity.
     public static void displayUserDecision(int intChoice) {
-        if (intChoice == 1) System.out.println("You chose " + toBold("String Reversal"));
+        if (intChoice == 1) System.out.println("-> You chose " + toBold("String Reversal"));
         else if (intChoice == 2) System.out.println("-> You chose " + toBold("Palindrome Checker"));
         else if (intChoice == 3) System.out.println("-> You chose " + toBold("Anagram Checker"));
         else if (intChoice == 4) System.out.println("-> You chose " + toBold("Word Count"));
