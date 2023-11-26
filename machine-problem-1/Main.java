@@ -12,7 +12,8 @@ public class Main {
 
         for (int i = 0; i < INT_EMPLOYEE_SIZE; i++) {
             displayDashes();
-            String strName = inputInformation();
+            System.out.print("Enter employee name: ");
+            String strName = input.nextLine();
             int[] arrDailyHours = inputWorkedHours();
 
             int[] arrDailySalary = calculateDailySalary(arrDailyHours);
@@ -26,12 +27,8 @@ public class Main {
             displayWeeklyIncome(intWeeklyIncome);
             input.nextLine();
         }
-    }
 
-    public static String inputInformation() {
-        System.out.print("Enter employee name: ");
-        String strName = input.nextLine();
-        return strName;
+        input.close();
     }
 
     public static int[] inputWorkedHours() {
