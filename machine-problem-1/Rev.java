@@ -11,11 +11,13 @@ public class Rev {
     public static final int INT_DASH_LENGTH = 65;
     public static final String STR_DASH = "-";
 
+    // Main method of the program.
     public static void main(String[] args) {
         displayDashes();
         System.out.println("\t\tEmployee Weekly Time Record (DTR)");
         displayDashes();
 
+        // This loop is responsible for looping through the employees.
         for (int intEmployeeCount = 0; intEmployeeCount < INT_MAX_EMPLOYEES; intEmployeeCount++) {
             System.out.println("\t\t\t   EMPLOYEE " + (intEmployeeCount + 1));
             displayDashes();
@@ -26,14 +28,15 @@ public class Rev {
             System.out.print("Enter employee name: ");
             String strEmployeeName = input.nextLine();
 
+            // These arrays are responsible for storing all program requirements.
             int[] arrDailyWorkedHours = new int[INT_DAYS_PER_WEEK];
             int[] arrDailySalaries = new int[INT_DAYS_PER_WEEK];
             int[] arrUnderTime = new int[INT_DAYS_PER_WEEK];
             int[] arrOverTime = new int[INT_DAYS_PER_WEEK];
             int intWeeklyTotalIncome = 0;
 
+            // This loop is responsible for looping through the days of the week.
             for (int i = 0; i < INT_DAYS_PER_WEEK; i++) {
-                // System.out.print("Enter hours worked on day " + (i + 1) + ": ");
                 arrDailyWorkedHours[i] = getInput(i);
                 arrDailySalaries[i] = calculateDailySalary(arrDailyWorkedHours[i]);
                 arrUnderTime[i] = calculateUnderTime(arrDailyWorkedHours[i]);
@@ -41,6 +44,7 @@ public class Rev {
                 intWeeklyTotalIncome = calculateWeeklyTotalIncome(intWeeklyTotalIncome, arrDailySalaries[i]);
             }
 
+            // Lines 48-59 are responsible for displaying the overall employee's information.
             System.out.println("\nEmployee ID of " + strEmployeeName + ": " + strEmployeeID);
             System.out.println("Employee Weekly Daily Time Record for " + strEmployeeName + ":");
 
@@ -57,42 +61,47 @@ public class Rev {
             displayDashes();
         }
 
-        System.out.println("Thank you for using Employee Weekly Time Record.");
-
+        System.out.println("Thank you for using Employee Weekly Time Recorder.");
         input.close();
         System.exit(0);
     }
 
+    // Method for calculating the daily salary.
     public static int calculateDailySalary(int intHoursWorked) {
         return intHoursWorked * INT_HOURLY_RATE;
     }
 
+    // Method for calculating the under time.
     public static int calculateUnderTime(int intHoursWorked) {
         return ((INT_WORK_HOURS - intHoursWorked) > 0) ? INT_WORK_HOURS - intHoursWorked : 0;
     }
 
+    // Method for calculating the over time.
     public static int calculateOverTime(int intHoursWorked) {
         return ((intHoursWorked - INT_WORK_HOURS) > 0) ? intHoursWorked - INT_WORK_HOURS : 0;
     }
 
+    // Method for calculating the weekly total income.
     public static int calculateWeeklyTotalIncome(int intWeeklyTotalIncome, int intDailySalary) {
         return intWeeklyTotalIncome += intDailySalary;
     }
 
+    // Method for displaying dashes (for design purposes).
     public static void displayDashes() {
         System.out.println(STR_DASH.repeat(INT_DASH_LENGTH));
     }
 
-    public static int getInput(int intIterationCount) {
+    // Method for getting a valid input from the user.
+    public static int getInput(int intDayCount) {
         int intIntegerInput;
 
         try {
-            System.out.print("Enter hours worked on day " + (intIterationCount + 1) + ": ");
+            System.out.print("Enter hours worked on day " + (intDayCount + 1) + ": ");
             intIntegerInput = input.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Enter integer values only.");
             input.nextLine();
-            return getInput(intIterationCount);
+            return getInput(intDayCount);
         }
 
         return intIntegerInput; 
