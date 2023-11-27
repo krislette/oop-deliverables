@@ -8,19 +8,19 @@ public class Rev {
     public static final int INT_MAX_EMPLOYEES = 5;
     public static final int INT_HOURLY_RATE = 250;
     public static final int INT_WORK_HOURS = 8;
-    public static final int INT_DASH_LENGTH = 65;
-    public static final String STR_DASH = "-";
+    public static final int INT_DESIGN_LENGTH = 65;
+    public static final String STR_DESIGN_STRING = "-";
 
     // Main method of the program.
     public static void main(String[] args) {
-        displayDashes();
+        displayDesign();
         System.out.println("\t\tEmployee Weekly Time Record (DTR)");
-        displayDashes();
+        displayDesign();
 
-        // This loop is responsible for looping through the employees.
+        // This loop is responsible for looping through the five employees.
         for (int intEmployeeCount = 0; intEmployeeCount < INT_MAX_EMPLOYEES; intEmployeeCount++) {
             System.out.println("\t\t\t   EMPLOYEE " + (intEmployeeCount + 1));
-            displayDashes();
+            displayDesign();
 
             System.out.print("Enter employee ID: ");
             String strEmployeeID = input.nextLine();
@@ -58,7 +58,7 @@ public class Rev {
 
             System.out.println("\nWeekly Total Income: PHP " + intWeeklyTotalIncome);
             input.nextLine();
-            displayDashes();
+            displayDesign();
         }
 
         System.out.println("Thank you for using Employee Weekly Time Recorder.");
@@ -87,8 +87,8 @@ public class Rev {
     }
 
     // Method for displaying dashes (for design purposes).
-    public static void displayDashes() {
-        System.out.println(STR_DASH.repeat(INT_DASH_LENGTH));
+    public static void displayDesign() {
+        System.out.println(STR_DESIGN_STRING.repeat(INT_DESIGN_LENGTH));
     }
 
     // Method for getting a valid input from the user.
