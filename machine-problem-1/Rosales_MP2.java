@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Rev {
+public class Rosales_MP2 {
 
     public static Scanner input = new Scanner(System.in);
     public static final int INT_DAYS_PER_WEEK = 5;
