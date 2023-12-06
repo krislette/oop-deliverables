@@ -2,8 +2,9 @@
     "java.project.sourcePaths": [
         "programming-exercises-1",
         "programming-exercises",
+        "machine-problem-1",
         "machine-problem",
         "assignment-2-2",
-        "machine-problem-1"
+        "100-challenge"
     ]
 }
