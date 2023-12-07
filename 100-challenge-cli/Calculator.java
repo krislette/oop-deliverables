@@ -20,6 +20,9 @@ public class Calculator {
         
         double dblResult = doOperation(dblFirstNumber, dblSecondNumber, intChoice);
         System.out.println("Answer: " + dblResult);
+
+        input.close();
+        System.exit(0);
     }
 
     // Method for checking if the input is within the range of the choices.
