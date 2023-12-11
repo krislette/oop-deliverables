@@ -34,41 +34,41 @@ public class GUICalculator extends JFrame {
 
     // Method for creating the button panel.
     public JPanel createButtonPanel() {
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(5, 4, 5, 5));
+        JPanel pnlButtons = new JPanel();
+        pnlButtons.setLayout(new GridLayout(5, 4, 5, 5));
 
         String[] arrButtons = {
             "7", "8", "9", "/",
             "4", "5", "6", "*",
             "1", "2", "3", "-",
             "0", ".", "=", "+",
-            "clear"
+            "Clear"
         };
 
         for (String strButton : arrButtons) {
             JButton button = new JButton(strButton);
             button.addActionListener(new ButtonClickListener());
-            buttonPanel.add(button);
+            pnlButtons.add(button);
         }
 
-        return buttonPanel;
+        return pnlButtons;
     }
 
     // Class for handling button clicks.
     public class ButtonClickListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            JButton button = (JButton) e.getSource();
-            String buttonText = button.getText();
+            JButton btnClicked = (JButton) e.getSource();
+            String strButtonText = btnClicked.getText();
 
-            switch (buttonText) {
+            switch (strButtonText) {
                 case "=":
                     evaluateExpression();
                     break;
-                case "clearDisplay":
+                case "Clear":
                     clearDisplay();
                     break;
                 default:
-                    updateCalculation(buttonText);
+                    updateCalculation(strButtonText);
             }
         }
     }
@@ -97,13 +97,13 @@ public class GUICalculator extends JFrame {
         String[] arrExpressions = strCalculation.split("(?=[-+*/])|(?<=[-+*/])");
         double dblCurrentResult = Double.parseDouble(arrExpressions[0]);
         char chrCurrentOperator = ' ';
-    
-        for (String strToken : arrExpressions) {
-            if (strToken.matches("[+-/*]")) {
-                chrCurrentOperator = strToken.charAt(0);
+
+        for (String strExpression : arrExpressions) {
+            if (strExpression.matches("[+-/*]")) {
+                chrCurrentOperator = strExpression.charAt(0);
             } else {
-                double dblOperand = Double.parseDouble(strToken);
-    
+                double dblOperand = Double.parseDouble(strExpression);
+
                 switch (chrCurrentOperator) {
                     case '+':
                         dblCurrentResult += dblOperand;
@@ -115,11 +115,8 @@ public class GUICalculator extends JFrame {
                         dblCurrentResult *= dblOperand;
                         break;
                     case '/':
-                        if (dblOperand != 0) {
-                            dblCurrentResult /= dblOperand;
-                        } else {
-                            throw new ArithmeticException("Cannot divide by zero");
-                        }
+                        if (dblOperand != 0) dblCurrentResult /= dblOperand;
+                        else throw new ArithmeticException("Cannot divide by zero");
                         break;
                     default:
                         dblCurrentResult = dblOperand;
@@ -127,7 +124,7 @@ public class GUICalculator extends JFrame {
                 }
             }
         }
-    
+
         return dblCurrentResult;
     }
 
@@ -139,7 +136,7 @@ public class GUICalculator extends JFrame {
 
     // Main method of the program.
     public static void main(String[] args) {
-        JOptionPane.showMessageDialog(null, "Welcome to my Calculator :)", "Welcome", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Welcome to my Calculator (:", "Welcome", JOptionPane.INFORMATION_MESSAGE);
         GUICalculator calculator = new GUICalculator();
         calculator.setVisible(true);
         calculator.setResizable(false);
