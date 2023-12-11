@@ -18,7 +18,7 @@ public class GUICalculator extends JFrame {
         // Creates a StringBuilder object to store the user input.
         strCalculation = new StringBuilder();
 
-        txtDisplay = new JTextField("0");
+        txtDisplay = new JTextField("");
         txtDisplay.setEditable(false);
         txtDisplay.setHorizontalAlignment(JTextField.RIGHT);
 
@@ -131,7 +131,7 @@ public class GUICalculator extends JFrame {
     // Method for clearing the display.
     public void clearDisplay() {
         strCalculation.setLength(0);
-        txtDisplay.setText("0");
+        txtDisplay.setText("");
     }
 
     // Main method of the program.
