@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Calculator {
+public class CLICalculator {
 
     public static Scanner input = new Scanner(System.in);
 
