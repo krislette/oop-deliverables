@@ -1,140 +1,146 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import javax.swing.JOptionPane;
 
-public class GUICalculator extends Frame {
+public class GUICalculator extends JFrame {
 
-    private TextField txtDisplay;
-    private Button[] btnNumbers;
-    private Button[] btnOperations;
-    private Button btnEquals;
-    private Button btnClear;
+    public StringBuilder strCalculation;
+    public JTextField txtDisplay;
 
-    // Variables for storing the numbers and the result.
-    private double dblNum1, dblNum2, dblResult;
-    private char chrOperator;
-
-    // Constructor for the GUI Calculator class.
+    // Constructor for the GUI Calculator.
     public GUICalculator() {
-        setTitle("Arithmetic Calculator");
-        setSize(300, 350);
-        setLayout(new BorderLayout(10, 10));
+        super("Calculator");
+        setSize(300, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
 
-        txtDisplay = new TextField("", 20);
+        // Creates a StringBuilder object to store the user input.
+        strCalculation = new StringBuilder();
+
+        txtDisplay = new JTextField("0");
         txtDisplay.setEditable(false);
+        txtDisplay.setHorizontalAlignment(JTextField.RIGHT);
+
+        Font txtDisplayFont = txtDisplay.getFont().deriveFont(Font.PLAIN, 20);
+        txtDisplay.setFont(txtDisplayFont);
+        txtDisplay.setPreferredSize(new Dimension(300, 50));
+
         add(txtDisplay, BorderLayout.NORTH);
+        add(createButtonPanel(), BorderLayout.CENTER);
 
-        // This block of code instantiates the buttons.
-        btnNumbers = new Button[10];
-        for (int i = 0; i < btnNumbers.length; i++) {
-            btnNumbers[i] = new Button(String.valueOf(i));
-            btnNumbers[i].addActionListener(new NumberButtonListener());
+        setLocationRelativeTo(null);
+    }
+
+    // Method for creating the button panel.
+    public JPanel createButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(5, 4, 5, 5));
+
+        String[] arrButtons = {
+            "7", "8", "9", "/",
+            "4", "5", "6", "*",
+            "1", "2", "3", "-",
+            "0", ".", "=", "+",
+            "clear"
+        };
+
+        for (String strButton : arrButtons) {
+            JButton button = new JButton(strButton);
+            button.addActionListener(new ButtonClickListener());
+            buttonPanel.add(button);
         }
 
-        // This block of code instantiates the operation buttons.
-        btnOperations = new Button[4];
-        String[] operators = {"+", "-", "*", "/"};
-        for (int i = 0; i < btnOperations.length; i++) {
-            btnOperations[i] = new Button(operators[i]);
-            btnOperations[i].addActionListener(new OperationButtonListener());
-        }
+        return buttonPanel;
+    }
 
-        // Instantiate the equals and clear buttons.
-        btnEquals = new Button("=");
-        btnEquals.addActionListener(new btnEqualsListener());
-        btnClear = new Button("C");
-        btnClear.addActionListener(new btnClearListener());
+    // Class for handling button clicks.
+    public class ButtonClickListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            JButton button = (JButton) e.getSource();
+            String buttonText = button.getText();
 
-        // Create a panel for the buttons.
-        Panel buttonPanel = new Panel();
-        buttonPanel.setLayout(new GridLayout(4, 4, 5, 5));
-        setBackground(Color.WHITE);
-
-        // This block of code adds the number buttons to the panel.
-        for (int i = 1; i <= 9; i += 3) {
-            buttonPanel.add(btnNumbers[i]);
-            buttonPanel.add(btnNumbers[i + 1]);
-            buttonPanel.add(btnNumbers[i + 2]);
-        }
-
-        buttonPanel.add(btnNumbers[0]);
-        buttonPanel.add(btnOperations[0]);
-        buttonPanel.add(btnOperations[1]);
-        buttonPanel.add(btnOperations[2]);
-        buttonPanel.add(btnOperations[3]);
-        buttonPanel.add(btnEquals);
-        buttonPanel.add(btnClear);
-
-        add(buttonPanel, BorderLayout.CENTER);
-
-        // Add terminate window listener.
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
+            switch (buttonText) {
+                case "=":
+                    evaluateExpression();
+                    break;
+                case "clearDisplay":
+                    clearDisplay();
+                    break;
+                default:
+                    updateCalculation(buttonText);
             }
-        });
-    }
-
-    // This block of code handles the button clicks.
-    private class NumberButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            Button button = (Button) e.getSource();
-            txtDisplay.setText(txtDisplay.getText() + button.getLabel());
         }
     }
 
-    // This block of code handles the operation button clicks.
-    private class OperationButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            Button button = (Button) e.getSource();
-            dblNum1 = Double.parseDouble(txtDisplay.getText());
-            chrOperator = button.getLabel().charAt(0);
-            txtDisplay.setText("");
+    // Method for updating the calculation based on the user button clicks.
+    public void updateCalculation(String userInput) {
+        strCalculation.append(userInput);
+        txtDisplay.setText(strCalculation.toString());
+    }
+
+    // Method for evaluating the expression when the equals button is clicked.
+    public void evaluateExpression() {
+        try {
+            double dblResult = evaluateCalculation(strCalculation.toString());
+            txtDisplay.setText(String.valueOf(dblResult));
+            strCalculation.setLength(0);
+            strCalculation.append(dblResult);
+        } catch (ArithmeticException | IllegalArgumentException ex) {
+            txtDisplay.setText("Error");
+            strCalculation.setLength(0);
         }
     }
 
-    private class btnEqualsListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            if (!txtDisplay.getText().isEmpty()) {
-                dblNum2 = Double.parseDouble(txtDisplay.getText());
-                switch (chrOperator) {
+    // Method for evaluating the string which contains the calculation.
+    public double evaluateCalculation(String strCalculation) {
+        String[] arrExpressions = strCalculation.split("(?=[-+*/])|(?<=[-+*/])");
+        double dblCurrentResult = Double.parseDouble(arrExpressions[0]);
+        char chrCurrentOperator = ' ';
+    
+        for (String strToken : arrExpressions) {
+            if (strToken.matches("[+-/*]")) {
+                chrCurrentOperator = strToken.charAt(0);
+            } else {
+                double dblOperand = Double.parseDouble(strToken);
+    
+                switch (chrCurrentOperator) {
                     case '+':
-                        dblResult = dblNum1 + dblNum2;
+                        dblCurrentResult += dblOperand;
                         break;
                     case '-':
-                        dblResult = dblNum1 - dblNum2;
+                        dblCurrentResult -= dblOperand;
                         break;
                     case '*':
-                        dblResult = dblNum1 * dblNum2;
+                        dblCurrentResult *= dblOperand;
                         break;
                     case '/':
-                        if (dblNum2 != 0) {
-                            dblResult = dblNum1 / dblNum2;
+                        if (dblOperand != 0) {
+                            dblCurrentResult /= dblOperand;
                         } else {
-                            txtDisplay.setText("Cannot divide by zero");
-                            return;
+                            throw new ArithmeticException("Cannot divide by zero");
                         }
                         break;
+                    default:
+                        dblCurrentResult = dblOperand;
+                        break;
                 }
-                txtDisplay.setText(String.valueOf(dblResult));
-                dblNum1 = dblResult; // Set the result as the new first number for further calculations
             }
         }
+    
+        return dblCurrentResult;
     }
 
-    private class btnClearListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            txtDisplay.setText("");
-            dblNum1 = dblNum2 = dblResult = 0;
-        }
+    // Method for clearing the display.
+    public void clearDisplay() {
+        strCalculation.setLength(0);
+        txtDisplay.setText("0");
     }
 
+    // Main method of the program.
     public static void main(String[] args) {
         JOptionPane.showMessageDialog(null, "Welcome to my Calculator :)", "Welcome", JOptionPane.INFORMATION_MESSAGE);
         GUICalculator calculator = new GUICalculator();
-        
         calculator.setVisible(true);
         calculator.setResizable(false);
     }
