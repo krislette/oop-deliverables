@@ -95,7 +95,7 @@ public class GUICalculator extends JFrame {
     // Method for evaluating the string which contains the calculation.
     public double evaluateCalculation(String strCalculation) {
         String[] arrExpressions = strCalculation.split("(?=[-+*/])|(?<=[-+*/])");
-        double dblCurrentResult = Double.parseDouble(arrExpressions[0]);
+        double dblResult = Double.parseDouble(arrExpressions[0]);
         char chrCurrentOperator = ' ';
 
         for (String strExpression : arrExpressions) {
@@ -106,26 +106,26 @@ public class GUICalculator extends JFrame {
 
                 switch (chrCurrentOperator) {
                     case '+':
-                        dblCurrentResult += dblOperand;
+                        dblResult += dblOperand;
                         break;
                     case '-':
-                        dblCurrentResult -= dblOperand;
+                        dblResult -= dblOperand;
                         break;
                     case '*':
-                        dblCurrentResult *= dblOperand;
+                        dblResult *= dblOperand;
                         break;
                     case '/':
-                        if (dblOperand != 0) dblCurrentResult /= dblOperand;
+                        if (dblOperand != 0) dblResult /= dblOperand;
                         else throw new ArithmeticException("Cannot divide by zero");
                         break;
                     default:
-                        dblCurrentResult = dblOperand;
+                        dblResult = dblOperand;
                         break;
                 }
             }
         }
 
-        return dblCurrentResult;
+        return dblResult;
     }
 
     // Method for clearing the display.
