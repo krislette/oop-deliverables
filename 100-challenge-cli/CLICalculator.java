@@ -7,29 +7,43 @@ public class CLICalculator {
     public static final int INT_DESIGN_LENGTH = 50;
     public static final String STR_DESIGN_STRING = "-";
 
+    // Main method of the program.
     public static void main(String[] args) {
-        displayDesign();
-        System.out.println("\t\t\t\b\b\b\bCalculator");
-        displayDesign();
+        // Enclose the whole program in a loop for continuous use.
+        while (true) {
+            displayDesign();
+            System.out.println("\t\t\t\b\b\b\bCalculator");
+            displayDesign();
 
-        System.out.println("-> Enter Two Numbers.");
+            // Lines 19 to 26 gets the user input.
+            System.out.println("-> Enter Two Numbers.");
+            displayDesign();
+
+            System.out.print("First Number:\t");
+            double dblFirstNumber = input.nextDouble();
+
+            System.out.print("Second Number:\t");
+            double dblSecondNumber = input.nextDouble();
+
+            displayDesign();
+            displayChoices();
+            int intChoice = getInput(1, 4);
+
+            // Lines 34 to 36 evaluates and displays the calculation using methods.
+            displayDesign();
+            double dblResult = doOperation(dblFirstNumber, dblSecondNumber, intChoice);
+            System.out.println("Answer: " + dblResult);
+            displayDesign();
+
+            // Lines 39 to 44 are responsible for asking the user on program repetition.
+            System.out.println("Do you want to use the calculator again?");
+            System.out.println("[1] Yes\n[2] No");
+
+            int intContinue = getInput(1, 2);
+            if (intContinue == 2) break;
+        }
+
         displayDesign();
-
-        System.out.print("First Number:\t");
-        double dblFirstNumber = input.nextDouble();
-
-        System.out.print("Second Number:\t");
-        double dblSecondNumber = input.nextDouble();
-
-        displayDesign();
-        displayChoices();
-        int intChoice = getInput(1, 4);
-
-        displayDesign();
-        double dblResult = doOperation(dblFirstNumber, dblSecondNumber, intChoice);
-        System.out.println("Answer: " + dblResult);
-        displayDesign();
-
         System.out.println("Thank you for using my program.");
 
         input.close();
