@@ -4,25 +4,41 @@ import java.util.Scanner;
 public class CLICalculator {
 
     public static Scanner input = new Scanner(System.in);
+    public static final int INT_DESIGN_LENGTH = 50;
+    public static final String STR_DESIGN_STRING = "-";
 
     public static void main(String[] args) {
-        System.out.println("Calculator");
+        displayDesign();
+        System.out.println("\t\t\t\b\b\b\bCalculator");
+        displayDesign();
 
-        System.out.println("Enter Two Numbers.");
+        System.out.println("-> Enter Two Numbers.");
+        displayDesign();
+
         System.out.print("First Number:\t");
         double dblFirstNumber = input.nextDouble();
-        
+
         System.out.print("Second Number:\t");
         double dblSecondNumber = input.nextDouble();
 
+        displayDesign();
         displayChoices();
         int intChoice = getInput(1, 4);
-        
+
+        displayDesign();
         double dblResult = doOperation(dblFirstNumber, dblSecondNumber, intChoice);
         System.out.println("Answer: " + dblResult);
+        displayDesign();
+
+        System.out.println("Thank you for using my program.");
 
         input.close();
         System.exit(0);
+    }
+
+    // Method for displaying dashes (for design purposes).
+    public static void displayDesign() {
+        System.out.println(STR_DESIGN_STRING.repeat(INT_DESIGN_LENGTH));
     }
 
     // Method for checking if the input is within the range of the choices.
@@ -51,30 +67,31 @@ public class CLICalculator {
         return intUserInput;
     }
 
-    //
+    // Method for displaying the choices.
     public static void displayChoices() {
-        System.out.println("Choose an Operation.");
+        System.out.println("-> Choose an Operation.");
+        displayDesign();
         System.out.println("[1] Addition");
         System.out.println("[2] Subtraction");
         System.out.println("[3] Multiplication");
         System.out.println("[4] Division");
     }
 
-    //
+    // Method for doing the operation based on the user choice.
     public static double doOperation(double dblFirstNumber, double dblSecondNumber, int intChoice) {
         double dblResult = 0;
 
         if (intChoice == 1) {
-            System.out.println("You Chose Addition.");
+            System.out.println("Chosen Operation: Addition.");
             dblResult = dblFirstNumber + dblSecondNumber;
         } else if (intChoice == 2) {
-            System.out.println("You Chose Subtraction.");
+            System.out.println("Chosen Operation: Subtraction.");
             dblResult = dblFirstNumber - dblSecondNumber;
         } else if (intChoice == 3) {
-            System.out.println("You Chose Multiplication.");
+            System.out.println("Chosen Operation: Multiplication.");
             dblResult = dblFirstNumber * dblSecondNumber;
         } else {
-            System.out.println("You Chose Division.");
+            System.out.println("Chosen Operation: Division.");
             dblResult = dblFirstNumber / dblSecondNumber;
         }
 
