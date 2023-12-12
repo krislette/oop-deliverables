@@ -29,13 +29,13 @@ public class CLICalculator {
             displayChoices();
             int intChoice = getInput(1, 4);
 
-            // Lines 34 to 36 evaluates and displays the calculation using methods.
+            // Lines 34 to 35 evaluates and displays the calculation using methods.
             displayDesign();
             double dblResult = doOperation(dblFirstNumber, dblSecondNumber, intChoice);
             System.out.println("Answer: " + dblResult);
             displayDesign();
 
-            // Lines 39 to 44 are responsible for asking the user on program repetition.
+            // Lines 39 to 43 are responsible for asking the user on program repetition.
             System.out.println("Do you want to use the calculator again?");
             System.out.println("[1] Yes\n[2] No");
 
