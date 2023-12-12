@@ -72,7 +72,7 @@ public class CLICalculator {
             input.nextLine();
             return getInput(intMin, intMax);
         }
-        
+
         if (!isValid(intUserInput, intMin, intMax)) {
             System.out.printf("Invalid input. Enter numbers from %d-%d only.\n", intMin, intMax);
             return getInput(intMin, intMax);
