@@ -46,9 +46,9 @@ public class GUICalculator extends JFrame {
         };
 
         for (String strButton : arrButtons) {
-            JButton button = new JButton(strButton);
-            button.addActionListener(new ButtonClickListener());
-            pnlButtons.add(button);
+            JButton btnNewButton = new JButton(strButton);
+            btnNewButton.addActionListener(new ButtonClickListener());
+            pnlButtons.add(btnNewButton);
         }
 
         return pnlButtons;
