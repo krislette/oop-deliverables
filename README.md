@@ -1,6 +1,6 @@
 # Repository Information
 This repository contains all my Java OOP learning deliverables. Explore my progress in mastering object-oriented programming principles.
-# Ongoing Course
+# Finished Course
 1. Object-Oriented Programming
 # Additional Information
 Course start date: October 02, 2023.
